@@ -155,6 +155,7 @@ function draw() {  // changed indentation so everything is following after the i
         }
         
         if(trashScore >= 1){
+            trashScore = 1
             //Completion Screen
             background(135,206,235);
             image(bg, 0, 0, 500, 800);
@@ -232,10 +233,11 @@ function mouseClicked() {
         One = true;
         clickbutton == false;
     }
+
         bottleX = random(50, width - 50); 
         bottleY = random(-500, -50);      
-        fishX = random(50, width - 50);   
-        fishY = random(-500, -50);
+
+
 
     if (mouseX > levelsXPos - 137 && mouseX < levelsXPos + 137 && mouseY > level2YPos - 52.5 && mouseY < level2YPos + 52.5 && clickbutton == true) {
         console.log("Level 2 clicked");
