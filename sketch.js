@@ -1,3 +1,58 @@
+/*
+
+Option 1: do what you are doing now ( copy and paste)
+
+Option 2: make a function to help you simplify your code
+
+let bottleX;
+let bottleY;
+
+let bottleX;
+let bottleY;
+
+let bottleX;
+let bottleY;
+
+let bottleX;
+let bottleY;
+
+function moveBottle(x,y){
+    // write the code to move the bottle from top to bottom 
+
+    // Check if bottle has fallen out of the canvas
+        if (bottleY > height) {
+            // Restart the bottle position
+            bottleX = random(50, width -50);
+            bottleY = random(-500,-50);
+        }
+
+}
+
+Option 3: use arrays to help store the positions
+let allBottleX = [];
+let allBottleY = [0, 0, 0];
+
+
+// repeat this procces 100 times ( create bottle random x positions)
+for (......){
+    allBottleX.push(random(0,255));
+}
+
+
+// used to draw bottles and implement the logic
+Ex: 0 - 2
+for (.......){
+
+    rect(allBottleX[i],allBottleY[i], 50,50);
+}
+
+
+*/
+
+
+
+
+
 //X & Y Coords 
 let levelsXPos = 235;
 let level1YPos = 300;
@@ -15,6 +70,7 @@ let fish;
 let bottle;
 let scuba;
 let bg;
+let bg_fail;
 let scubaImg;
 
 
@@ -27,7 +83,11 @@ let bottleY;
 let fishX;
 let fishY;
 
+
+
 let trashScore = 0;
+let lives = 3;
+
 
 
 function preload(){
@@ -35,6 +95,7 @@ function preload(){
     bottle = loadImage("images/bottle.png");
     scuba = loadImage("images/scuba.png");
     bg = loadImage("images/bg.png");
+    bgFail = loadImage("images/bg_fail.jpg");
     scubaImg = loadImage("images/scuba.png");
 }
 
@@ -82,6 +143,7 @@ function setup() {
 
 
 function draw() {  // changed indentation so everything is following after the if one == true statement
+
     if(trashScore>=10){
         //Completion Screen
         background(135,206,235);
@@ -117,9 +179,43 @@ function draw() {  // changed indentation so everything is following after the i
         text("Congratulations!", 280, 340, 300, 50);
         textSize(25);
         text("You saved the Ocean", 275, 380, 300, 30);
-        noLoop()
+        One == false;
+    } else if ( lives == 0){
+        background(135,206,235);
+        image(bgFail, 0, 0, 500, 800);
 
+        image(scubaImg, 230, 10, 50, 50);
+        textSize(22);
+        stroke(1);
+        text("Ocean Crew", 260, 120, 300, 100);
+
+        //Seperation line from Top
+        fill(255)
+        rect(100, 100, 800, 10);
+
+//Box for Level Fail
+        fill(255);
+        rect(250, 200, 300, 100);
+
+//Text within Level Failed Box
+        fill(0);
+        textSize(30);
+        stroke(1);
+        text("Level Failed :(", 260, 240, 300, 100);
+
+        //Box for Fail
+        fill(255);
+        rect(250, 350, 300, 100);
+
+        //Text within Fail Box
+        fill(0);
+        textSize(30);
+        stroke(1);
+        text("Oh No", 250, 340, 300, 50);
+        textSize(25);
+        text("The Ocean is polluted!", 255, 380, 300, 30);
     }
+
     else if(One == true) {
         console.log("Inside level1");
         background(135,206,235)
@@ -127,6 +223,7 @@ function draw() {  // changed indentation so everything is following after the i
         textSize(20);
         text("Ocean Crew", 60, 30);
         text("Score: " + trashScore, 45, 60);
+        text("Lives: " + lives, 45, 40);
 
         // Draw the bottle
         bottleY += 3;
@@ -145,6 +242,8 @@ function draw() {  // changed indentation so everything is following after the i
             // Restart the bottle position after collection
             bottleX = random(50, width -50);
             bottleY = random(-500, -50);
+            bottleX = random(50, width -50);
+            bottleY = random(-500, -50);
         }    
         // Draw the fish
         fishY += 3;
@@ -152,7 +251,7 @@ function draw() {  // changed indentation so everything is following after the i
 
 
         if(fishX > myxPos-20 && fishX < myxPos + 80 && fishY > myYpos -20 && fishY < myYpos + 80){
-            trashScore--;
+            lives--;
             fishX = random(50,width-50);
             fishY = random(-500,-50)
             
@@ -251,3 +350,7 @@ function mouseClicked() {
         Three = true;
     }
 }
+
+
+//Create a function that spawns a bottle at random X position from top of the screen (y = 0 or less than). 
+// Since draw() runs infinite amount of times, if you call the function, it'll probably spawn a bunch
