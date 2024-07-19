@@ -1,4 +1,4 @@
-//X & Y Coords
+//X & Y Coords 
 let levelsXPos = 235;
 let level1YPos = 300;
 let level2YPos = 450;
@@ -145,7 +145,11 @@ function draw() {  // changed indentation so everything is following after the i
             // Restart the bottle position after collection
             bottleX = random(50, width -50);
             bottleY = random(-500, -50);
-        }
+        }    
+        // Draw the fish
+        fishY += 3;
+        image(fish, fishX, fishY);
+
 
         if(fishX > myxPos-20 && fishX < myxPos + 80 && fishY > myYpos -20 && fishY < myYpos + 80){
             trashScore--;
@@ -155,7 +159,6 @@ function draw() {  // changed indentation so everything is following after the i
         }
         
         if(trashScore >= 1){
-            trashScore = 1
             //Completion Screen
             background(135,206,235);
             image(bg, 0, 0, 500, 800);
@@ -192,10 +195,7 @@ function draw() {  // changed indentation so everything is following after the i
             text("You saved the Ocean", 255, 380, 300, 30);
         }
         
-        // Draw the fish
-        fishY += 3;
-        image(fish, fishX, fishY);
-
+    
         // Check if fish has fallen out of the canvas
         if (fishY > height) {
             // Restart the fish position
@@ -231,13 +231,13 @@ function mouseClicked() {
         console.log("Level 1 clicked");
         background(135,206,235);
         One = true;
-        clickbutton == false;
-    }
+        clickbutton == false; 
+    } 
 
-        bottleX = random(50, width - 50); 
-        bottleY = random(-500, -50);      
-
-
+    fishX = random(50, width - 50);   
+    fishY = random(-500, -50);
+    bottleX = random(50, width - 50); 
+    bottleY = random(-500, -50); 
 
     if (mouseX > levelsXPos - 137 && mouseX < levelsXPos + 137 && mouseY > level2YPos - 52.5 && mouseY < level2YPos + 52.5 && clickbutton == true) {
         console.log("Level 2 clicked");
