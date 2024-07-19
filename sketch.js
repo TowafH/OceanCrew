@@ -257,7 +257,7 @@ function draw() {  // changed indentation so everything is following after the i
             
         }
         
-        if(trashScore >= 1){
+        if(trashScore >= 7){
             //Completion Screen
             background(135,206,235);
             image(bg, 0, 0, 500, 800);
