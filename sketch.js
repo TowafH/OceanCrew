@@ -116,7 +116,7 @@ function draw() {  // changed indentation so everything is following after the i
             
         }
         
-        if(trashScore >= 5){
+        if(trashScore >= 1){
             //Completion Screen
             background(135,206,235);
             image(bg, 0, 0, 500, 800);
@@ -124,7 +124,7 @@ function draw() {  // changed indentation so everything is following after the i
             image(scubaImg, 235, 10, 50, 50);
             textSize(22);
             stroke(1);
-            text("Ocean Crew", 345, 120, 300, 100);
+            text("Ocean Crew", 255, 120, 300, 100);
 
             //Seperation line from Top
             fill(255)
@@ -138,7 +138,7 @@ function draw() {  // changed indentation so everything is following after the i
             fill(0);
             textSize(30);
             stroke(1);
-            text("Level Completed!!", 280, 240, 300, 100);
+            text("Level Completed!!", 255, 240, 300, 100);
 
             //Box for Congratulations
             fill(255);
@@ -148,9 +148,9 @@ function draw() {  // changed indentation so everything is following after the i
             fill(0);
             textSize(30);
             stroke(1);
-            text("Congratulations!", 280, 340, 300, 50);
+            text("Congratulations!", 255, 340, 300, 50);
             textSize(25);
-            text("You saved the Ocean", 275, 380, 300, 30);
+            text("You saved the Ocean", 255, 380, 300, 30);
         }
         
         // Draw the fish
