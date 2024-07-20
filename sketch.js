@@ -104,6 +104,8 @@ function preload(){
     scubaImg = loadImage("images/scuba.png");
     scubaLogo = loadImage("images/scubaLogo.png");
     myFont = loadFont("static/Genos-Bold.ttf")
+    bottlePickUpSound = loadSound("sounds/coin.mp3");
+    fishPickUpSound = loadSound("sounds/error.mp3");
 }
 
 function setup() {
@@ -266,8 +268,7 @@ function draw() {
             // Restart the bottle position after collection
             bottleX = random(50, width -50);
             bottleY = random(-500, -50);
-            bottleX = random(50, width -50);
-            bottleY = random(-500, -50);
+            bottlePickUpSound.play();
         }    
 
         // Draw the fish
@@ -279,7 +280,7 @@ function draw() {
             lives--;
             fishX = random(50,width-50);
             fishY = random(-500,-50)
-            
+            fishPickUpSound.play();
         }
         
         // Check if fish has fallen out of the canvas
