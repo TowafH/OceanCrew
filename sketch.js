@@ -163,16 +163,15 @@ function setup() {
 
 function draw() { 
 
-    if(One == true && trashScore >= 10){
+    if(trashScore >= 10){
 //Changes screen to the Completion Screen
         background(135,206,235);
-        image(bg, 0, 0, 500, 800);
-
+        image(bg_win, 0, 0, 500, 800);
 //Generates the Game Logo
-        image(scubaLogo, 235, 10, 50, 50);
+        image(scubaLogo, 210, 1, 100, 100);
         textSize(22);
         stroke(1);
-        text("Ocean Crew", 345, 120, 300, 100);
+        text("Ocean Crew", 260, 120, 300, 100);
 
         //Seperation line from Top
         fill(255)
@@ -186,7 +185,7 @@ function draw() {
         fill(0);
         textSize(30);
         stroke(1);
-        text("Level Completed!!", 280, 240, 300, 100);
+        text("Level Completed!!", 255, 240, 300, 100);
 
 //Box for Congratulations
         fill(255);
@@ -196,14 +195,14 @@ function draw() {
         fill(0);
         textSize(30);
         stroke(1);
-        text("Congratulations!", 280, 340, 300, 50);
+        text("Congratulations!", 255, 340, 300, 50);
         textSize(25);
-        text("You saved the Ocean", 275, 380, 300, 30);
+        text("You saved the Ocean", 255, 380, 300, 30);
         One == false;
     } 
 
 //Checks if the user lost all their lives, switch to failScreen
-    else if (One == true && lives == 0){
+    else if (lives == 0){
         background(135,206,235);
         image(bg_fail, 0, 0, 500, 800);
 
@@ -283,45 +282,6 @@ function draw() {
             
         }
         
-
-        if(One == true && trashScore >= 7){
-            //Completion Screen
-            background(135,206,235);
-            image(bg_win, 0, 0, 500, 800);
-            //Scuba Img
-            image(scubaLogo, 235, 10, 50, 50);
-            textSize(22);
-            stroke(1);
-            text("Ocean Crew", 255, 120, 300, 100);
-
-            //Seperation line from Top
-            fill(255)
-            rect(100, 100, 800, 10);
-
-            //Box for Level Completed
-            fill(255);
-            rect(250, 200, 300, 100);
-
-            //Text within Level Completed Box
-            fill(0);
-            textSize(30);
-            stroke(1);
-            text("Level Completed!!", 255, 240, 300, 100);
-
-            //Box for Congratulations
-            fill(255);
-            rect(250, 350, 300, 100);
-
-            //Text within Congratulations Box
-            fill(0);
-            textSize(30);
-            stroke(1);
-            text("Congratulations!", 255, 340, 300, 50);
-            textSize(25);
-            text("You saved the Ocean", 255, 380, 300, 30);
-        }
-        
-    
         // Check if fish has fallen out of the canvas
         if (fishY > height) {
             // Restart the fish position
