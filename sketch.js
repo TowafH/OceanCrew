@@ -98,7 +98,7 @@ function preload(){
     bottle = loadImage("images/bottle.png");
     scuba = loadImage("images/scuba.png");
     bg_home = loadImage("images/bg_home.png")
-    bg_game = loadImage("images/bg_game.png");
+    bg_game = loadImage("images/bg_game2.png");
     bg_fail = loadImage("images/bg_fail.jpg");
     bg_win = loadImage("images/bg_win.png");
     scubaImg = loadImage("images/scuba.png");
@@ -283,7 +283,7 @@ function draw() {
             
         }
         
-        
+
         if(One == true && trashScore >= 7){
             //Completion Screen
             background(135,206,235);
