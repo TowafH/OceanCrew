@@ -97,20 +97,28 @@ function preload(){
     bg_win = loadImage("images/bg_win.png");
     scubaImg = loadImage("images/scuba.png");
     scubaLogo = loadImage("images/scubaLogo.png");
+    myFont = loadFont("static/Genos-Bold.ttf")
 }
 
 function setup() {
     createCanvas(500, 800);
     noStroke();
     rectMode(CENTER);
+    textFont(myFont);
 
+    //Background Image for HomeScreen
     background(135,206,235);
     image(bg_home, 0, 0, 500, 800);
-    rect(235, 80, 274, 133,);
 
-    textSize(30);
+    //Headline Rect
+    fill(177, 212, 224);
+    rect(235, 80, 274, 133, 10);
+
+    //Text within topRect
+    fill(20, 93, 160);
+    textSize(35);
     stroke(1);
-    text("Scuba Heritage", 235, 100, 100, 100);
+    text("Scuba Heritage", 295, 90, 250, 100);
 
     // Rectangle to Click Level 1
     fill(178, 154, 131);
@@ -118,7 +126,6 @@ function setup() {
     textSize(30);
     stroke(1);
     fill(0,0,0);
-    textAlign(CENTER);
     text("Easy", 250, 335, 120, 100);
 
     // Rectangle to Click Level 2
@@ -142,14 +149,14 @@ function setup() {
 }
 
 
-function draw() {  // changed indentation so everything is following after the if one == true statement
+function draw() { 
 
     if(trashScore >= 10){
-        //Changes screen to the Completion Screen
+//Changes screen to the Completion Screen
         background(135,206,235);
         image(bg, 0, 0, 500, 800);
 
-        //Generates the Game Logo
+//Generates the Game Logo
         image(scubaLogo, 235, 10, 50, 50);
         textSize(22);
         stroke(1);
@@ -169,11 +176,11 @@ function draw() {  // changed indentation so everything is following after the i
         stroke(1);
         text("Level Completed!!", 280, 240, 300, 100);
 
-        //Box for Congratulations
+//Box for Congratulations
         fill(255);
         rect(250, 350, 300, 100, 5);
 
-        //Text within Congratulations Box
+//Text within Congratulations Box
         fill(0);
         textSize(30);
         stroke(1);
@@ -181,16 +188,19 @@ function draw() {  // changed indentation so everything is following after the i
         textSize(25);
         text("You saved the Ocean", 275, 380, 300, 30);
         One == false;
-    } else if ( lives == 0){
-        background(135,206,235);
-        image(bgFail, 0, 0, 500, 800);
+    } 
 
-        image(scubaImg, 230, 10, 50, 50);
+//Checks if the user lost all their lives, switch to failScreen
+    else if ( lives == 2){
+        background(135,206,235);
+        image(bg_fail, 0, 0, 500, 800);
+
+        image(scubaLogo, 210, 1, 100, 100);
         textSize(22);
         stroke(1);
         text("Ocean Crew", 260, 120, 300, 100);
 
-        //Seperation line from Top
+//Seperation line from Top
         fill(255)
         rect(100, 100, 800, 10);
 
@@ -204,7 +214,7 @@ function draw() {  // changed indentation so everything is following after the i
         stroke(1);
         text("Level Failed :(", 260, 240, 300, 100);
 
-        //Box for Fail
+//Box for Fail
         fill(255);
         rect(250, 350, 300, 100, 5);
 
