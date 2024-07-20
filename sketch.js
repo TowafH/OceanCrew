@@ -51,7 +51,7 @@ for (.......){
 
 
 //X Coord & Y Coords for HomeScreen Rect
-let levelsXPos = 235;
+let levelsXPos = 250;
 let level1YPos = 300;
 let level2YPos = 450;
 let level3YPos = 600;
@@ -83,7 +83,13 @@ let fishY;
 
 //Initial Score Variables
 let trashScore = 0;
-let lives = 3;
+let lives = 5;
+
+let trashScore2 = 0;
+let lives2 = 3;
+
+let trashScore3 = 0;
+let lives3 = 2;
 
 
 
@@ -111,47 +117,53 @@ function setup() {
     image(bg_home, 0, 0, 500, 800);
 
     //Headline Rect
+    stroke(255,255,255);
     fill(177, 212, 224);
-    rect(235, 80, 274, 133, 10);
+    rect(250, 80, 274, 133, 10);
 
     //Text within topRect
+    noStroke();
     fill(20, 93, 160);
-    textSize(35);
-    stroke(1);
-    text("Scuba Heritage", 295, 90, 250, 100);
+    textSize(45);
+    textAlign(CENTER);
+    text("Scuba Heritage", 255, 70, 200, 100);
 
     // Rectangle to Click Level 1
-    fill(178, 154, 131);
-    rect(levelsXPos, level1YPos, 274, 105, 5); 
-    textSize(30);
-    stroke(1);
-    fill(0,0,0);
-    text("Easy", 250, 335, 120, 100);
+    stroke(255,255,255);
+    fill(20, 93, 160);
+    rect(levelsXPos, level1YPos, 250, 100, 5); 
+    noStroke();
+    textSize(40);
+    fill(177, 212, 224);
+    textAlign(CENTER);
+    text("Easy", 255, 315, 120, 80);
 
     // Rectangle to Click Level 2
-    fill(178, 154, 131);
-    rect(levelsXPos, level2YPos, 274, 105, 5);
-    textSize(30);
-    stroke(1);
-    fill(0,0,0);
+    stroke(255,255,255);
+    fill(20, 93, 160);
+    rect(levelsXPos, level2YPos, 250, 100, 5);
+    noStroke();
+    textSize(40);
+    fill(177, 212, 224);
     textAlign(CENTER);
-    text("Medium", 250, 487, 120, 100);
+    text("Medium", 255, 477, 120, 100);
 
     // Rectangle to Click Level 3
-    fill(178, 154, 131);
-    rect(levelsXPos, level3YPos, 274, 105, 5);
-    textSize(30);
-    stroke(1);
-    fill(0,0,0);
+    stroke(255,255,255);
+    fill(20, 93, 160);
+    rect(levelsXPos, level3YPos, 250, 100, 5);
+    noStroke();
+    textSize(40);
+    fill(177, 212, 224);
     textAlign(CENTER);
-    text("Hard", 250, 635, 120, 100);
-
+    text("Hard", 255, 625, 120, 100);
+    fill(0,0,0);
 }
 
 
 function draw() { 
 
-    if(trashScore >= 10){
+    if(One == true && trashScore >= 10){
 //Changes screen to the Completion Screen
         background(135,206,235);
         image(bg, 0, 0, 500, 800);
@@ -191,7 +203,7 @@ function draw() {
     } 
 
 //Checks if the user lost all their lives, switch to failScreen
-    else if ( lives == 2){
+    else if (One == true && lives == 0){
         background(135,206,235);
         image(bg_fail, 0, 0, 500, 800);
 
@@ -235,7 +247,7 @@ function draw() {
         textSize(20);
         text("Ocean Crew", 60, 30);
         text("Score: " + trashScore, 45, 60);
-        text("Lives: " + lives, 45, 40);
+        text("Lives: " + lives, 45, 45);
 
         // Draw the bottle
         bottleY += 3;
@@ -271,12 +283,13 @@ function draw() {
             
         }
         
-        if(trashScore >= 7){
+        
+        if(One == true && trashScore >= 7){
             //Completion Screen
             background(135,206,235);
             image(bg_win, 0, 0, 500, 800);
             //Scuba Img
-            image(scubaImg, 235, 10, 50, 50);
+            image(scubaLogo, 235, 10, 50, 50);
             textSize(22);
             stroke(1);
             text("Ocean Crew", 255, 120, 300, 100);
@@ -336,6 +349,7 @@ function draw() {
             myYpos += 10;
             }
         }
+        //END OF CODE FOR LEVEL 1
 }
 
 
@@ -359,6 +373,7 @@ function mouseClicked() {
         console.log("Level 2 clicked");
         background(135,206,235);
         Two = true;
+        clickbutton == false; 
     }   
     
     //Selects the Area that has to be clicked to start level 1
