@@ -34,7 +34,7 @@ let allBottleY = [0, 0, 0];
 
 
 // repeat this procces 100 times ( create bottle random x positions)
-for (......){
+for (.........){
     allBottleX.push(random(0,255));
 }
 
@@ -331,10 +331,11 @@ function mouseClicked() {
     //Generates the Fish
     fishX = random(50, width - 50);   
     fishY = random(-500, -50);
+    //Generates the Bottle
     bottleX = random(50, width - 50); 
     bottleY = random(-500, -50); 
 
-    //Selects the Area that has to be clicked to start level 1
+    //Selects the Area that has to be clicked to start level 2
     if (mouseX > levelsXPos - 137 && mouseX < levelsXPos + 137 && mouseY > level2YPos - 52.5 && mouseY < level2YPos + 52.5 && clickbutton == true) {
         console.log("Level 2 clicked");
         background(135,206,235);
@@ -342,7 +343,7 @@ function mouseClicked() {
         clickbutton == false; 
     }   
     
-    //Selects the Area that has to be clicked to start level 1
+    //Selects the Area that has to be clicked to start level 3
     if (mouseX > levelsXPos - 137 && mouseX < levelsXPos + 137 &&  mouseY > level3YPos - 52.5 && mouseY < level3YPos + 52.5 && clickbutton == true) {
         console.log("Level 3 clicked");
         background(135,206,235);
@@ -353,3 +354,6 @@ function mouseClicked() {
 
 //Create a function that spawns a bottle at random X position from top of the screen (y = 0 or less than). 
 // Since draw() runs infinite amount of times, if you call the function, it'll probably spawn a bunch
+function spawnBottle(){
+
+}
