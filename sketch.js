@@ -50,22 +50,19 @@ for (.......){
 */
 
 
-
-
-
-//X & Y Coords 
+//X Coord & Y Coords for HomeScreen Rect
 let levelsXPos = 235;
 let level1YPos = 300;
 let level2YPos = 450;
 let level3YPos = 600;
 
-//Switch levels
+//Variables to switch Screens
 let One = false;
 let Two = false;
 let Three = false;
 let clickbutton = true;
 
-//Preload Images 
+//Variables to Preload Images 
 let fish;
 let bottle;
 let scuba;
@@ -74,17 +71,17 @@ let bg_fail;
 let scubaImg;
 
 
-//Adinsonn Variables
+//Setup Scuba Diver Collision Variable
 let myxPos = 100;
 let myYpos = 100;
 
+//Setup Bottles Image
 let bottleX;
 let bottleY;
 let fishX;
 let fishY;
 
-
-
+//Initial Score Variables
 let trashScore = 0;
 let lives = 3;
 
@@ -94,9 +91,12 @@ function preload(){
     fish = loadImage("images/fish.png");// changed to fish it was in bg
     bottle = loadImage("images/bottle.png");
     scuba = loadImage("images/scuba.png");
-    bg = loadImage("images/bg.png");
-    bgFail = loadImage("images/bg_fail.jpg");
+    bg_home = loadImage("images/bg_home.png")
+    bg_game = loadImage("images/bg_game.png");
+    bg_fail = loadImage("images/bg_fail.jpg");
+    bg_win = loadImage("images/bg_win.png");
     scubaImg = loadImage("images/scuba.png");
+    scubaLogo = loadImage("images/scubaLogo.png");
 }
 
 function setup() {
@@ -105,8 +105,8 @@ function setup() {
     rectMode(CENTER);
 
     background(135,206,235);
-    image(bg, 0, 0, 500, 800);
-    rect(235, 80, 274, 133);
+    image(bg_home, 0, 0, 500, 800);
+    rect(235, 80, 274, 133,);
 
     textSize(30);
     stroke(1);
@@ -114,7 +114,7 @@ function setup() {
 
     // Rectangle to Click Level 1
     fill(178, 154, 131);
-    rect(levelsXPos, level1YPos, 274, 105); // changed indentation as there was indents after rect
+    rect(levelsXPos, level1YPos, 274, 105, 5); 
     textSize(30);
     stroke(1);
     fill(0,0,0);
@@ -123,7 +123,7 @@ function setup() {
 
     // Rectangle to Click Level 2
     fill(178, 154, 131);
-    rect(levelsXPos, level2YPos, 274, 105);
+    rect(levelsXPos, level2YPos, 274, 105, 5);
     textSize(30);
     stroke(1);
     fill(0,0,0);
@@ -132,7 +132,7 @@ function setup() {
 
     // Rectangle to Click Level 3
     fill(178, 154, 131);
-    rect(levelsXPos, level3YPos, 274, 105);
+    rect(levelsXPos, level3YPos, 274, 105, 5);
     textSize(30);
     stroke(1);
     fill(0,0,0);
@@ -144,12 +144,13 @@ function setup() {
 
 function draw() {  // changed indentation so everything is following after the if one == true statement
 
-    if(trashScore>=10){
-        //Completion Screen
+    if(trashScore >= 10){
+        //Changes screen to the Completion Screen
         background(135,206,235);
         image(bg, 0, 0, 500, 800);
-        //Scuba Img
-        image(scubaImg, 235, 10, 50, 50);
+
+        //Generates the Game Logo
+        image(scubaLogo, 235, 10, 50, 50);
         textSize(22);
         stroke(1);
         text("Ocean Crew", 345, 120, 300, 100);
@@ -160,7 +161,7 @@ function draw() {  // changed indentation so everything is following after the i
 
 //Box for Level Completed
         fill(255);
-        rect(250, 200, 300, 100);
+        rect(250, 200, 300, 100, 5);
 
 //Text within Level Completed Box
         fill(0);
@@ -170,7 +171,7 @@ function draw() {  // changed indentation so everything is following after the i
 
         //Box for Congratulations
         fill(255);
-        rect(250, 350, 300, 100);
+        rect(250, 350, 300, 100, 5);
 
         //Text within Congratulations Box
         fill(0);
@@ -195,7 +196,7 @@ function draw() {  // changed indentation so everything is following after the i
 
 //Box for Level Fail
         fill(255);
-        rect(250, 200, 300, 100);
+        rect(250, 200, 300, 100, 5);
 
 //Text within Level Failed Box
         fill(0);
@@ -205,7 +206,7 @@ function draw() {  // changed indentation so everything is following after the i
 
         //Box for Fail
         fill(255);
-        rect(250, 350, 300, 100);
+        rect(250, 350, 300, 100, 5);
 
         //Text within Fail Box
         fill(0);
@@ -217,9 +218,10 @@ function draw() {  // changed indentation so everything is following after the i
     }
 
     else if(One == true) {
+
         console.log("Inside level1");
         background(135,206,235)
-        image(bg, 0, 0, 500, 800);
+        image(bg_game, 0, 0, 500, 800);
         textSize(20);
         text("Ocean Crew", 60, 30);
         text("Score: " + trashScore, 45, 60);
@@ -229,6 +231,7 @@ function draw() {  // changed indentation so everything is following after the i
         bottleY += 3;
         image(bottle, bottleX, bottleY);
 
+
         // Check if bottle has fallen out of the canvas
         if (bottleY > height) {
             // Restart the bottle position
@@ -236,7 +239,7 @@ function draw() {  // changed indentation so everything is following after the i
             bottleY = random(-500,-50);
         }
 
-        // Check for collision with the scuba diver
+        // Check for Player Collison with Bottle
         if (bottleX > myxPos - 20 && bottleX < myxPos + 80 && bottleY > myYpos - 20 && bottleY < myYpos + 80) {
             trashScore++;
             // Restart the bottle position after collection
@@ -245,11 +248,12 @@ function draw() {  // changed indentation so everything is following after the i
             bottleX = random(50, width -50);
             bottleY = random(-500, -50);
         }    
+
         // Draw the fish
         fishY += 3;
         image(fish, fishX, fishY);
 
-
+        //Check for Player Collision with Fish
         if(fishX > myxPos-20 && fishX < myxPos + 80 && fishY > myYpos -20 && fishY < myYpos + 80){
             lives--;
             fishX = random(50,width-50);
@@ -260,7 +264,7 @@ function draw() {  // changed indentation so everything is following after the i
         if(trashScore >= 7){
             //Completion Screen
             background(135,206,235);
-            image(bg, 0, 0, 500, 800);
+            image(bg_win, 0, 0, 500, 800);
             //Scuba Img
             image(scubaImg, 235, 10, 50, 50);
             textSize(22);
@@ -306,19 +310,19 @@ function draw() {  // changed indentation so everything is following after the i
         image(scuba, myxPos, myYpos, 50, 50);
 
         //Movement keys
-        if (keyIsDown(LEFT_ARROW)) {
+        if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
             myxPos -= 10;
         } 
     
-        if (keyIsDown(RIGHT_ARROW)) {
+        if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
             myxPos += 10;
         } 
     
-        if (keyIsDown(UP_ARROW)) {
+        if (keyIsDown(UP_ARROW) || keyIsDown(87)) {
             myYpos -= 10;
         } 
     
-        if (keyIsDown(DOWN_ARROW)) {
+        if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {
             myYpos += 10;
             }
         }
@@ -326,6 +330,7 @@ function draw() {  // changed indentation so everything is following after the i
 
 
 function mouseClicked() {
+    //Selects the Area that has to be clicked to start level 1
     if (mouseX > levelsXPos - 137 && mouseX < levelsXPos + 137 &&  mouseY > level1YPos - 52.5 && mouseY < level1YPos + 52.5 &&  clickbutton == true) {
         console.log("Level 1 clicked");
         background(135,206,235);
@@ -333,17 +338,20 @@ function mouseClicked() {
         clickbutton == false; 
     } 
 
+    //Generates the Fish
     fishX = random(50, width - 50);   
     fishY = random(-500, -50);
     bottleX = random(50, width - 50); 
     bottleY = random(-500, -50); 
 
+    //Selects the Area that has to be clicked to start level 1
     if (mouseX > levelsXPos - 137 && mouseX < levelsXPos + 137 && mouseY > level2YPos - 52.5 && mouseY < level2YPos + 52.5 && clickbutton == true) {
         console.log("Level 2 clicked");
         background(135,206,235);
         Two = true;
     }   
     
+    //Selects the Area that has to be clicked to start level 1
     if (mouseX > levelsXPos - 137 && mouseX < levelsXPos + 137 &&  mouseY > level3YPos - 52.5 && mouseY < level3YPos + 52.5 && clickbutton == true) {
         console.log("Level 3 clicked");
         background(135,206,235);
