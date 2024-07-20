@@ -246,9 +246,14 @@ function draw() {
         background(135,206,235)
         image(bg_game, 0, 0, 500, 800);
         textSize(20);
-        text("Ocean Crew", 60, 30);
+        fill(0);
+        text("Ocean Crew", 60, 20);
         text("Score: " + trashScore, 45, 60);
         text("Lives: " + lives, 45, 45);
+
+        fill(255);
+        text("Avoid the Fish", 430, 20);
+        text("Collect 10 bottles to win!", 390, 60);
 
         // Draw the bottle
         bottleY += 3;
