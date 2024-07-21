@@ -512,7 +512,7 @@ function draw() {
         if ((keyIsDown(DOWN_ARROW) || keyIsDown(83)) && myYpos < height - 50) {
             myYpos += 10;
         }
-                }
+    }
                 //END OF CODE FOR LEVEL 2
 
 
@@ -680,7 +680,7 @@ function draw() {
         if ((keyIsDown(DOWN_ARROW) || keyIsDown(83)) && myYpos < height - 50) {
             myYpos += 10;
         }
-                            }
+    }
 }
 
 
