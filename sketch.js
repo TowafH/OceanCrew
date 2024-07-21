@@ -666,19 +666,19 @@ function draw() {
                     
                             //Movement keys
                             if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
-                                myxPos -= 6;
+                                myxPos -= 7;
                             } 
                         
                             if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
-                                myxPos += 6;
+                                myxPos += 7;
                             } 
                         
                             if (keyIsDown(UP_ARROW) || keyIsDown(87)) {
-                                myYpos -= 6;
+                                myYpos -= 7;
                             } 
                         
                             if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {
-                                myYpos += 6;
+                                myYpos += 7;
                                 }
                             }
 }
