@@ -62,14 +62,18 @@ let Two = false;
 let Three = false;
 let clickbutton = true;
 
-//Variables to Preload Images 
+//Variables to Preload Images/Sounds
 let fish;
 let bottle;
 let scuba;
 let bg;
 let bg_fail;
 let scubaImg;
-
+let myFont;
+let bottlePickUpSound;
+let fishPickUpSound;
+let winSound;
+let loseSound;
 
 //Setup Scuba Diver Collision Variable
 let myxPos = 100;
@@ -108,6 +112,8 @@ function preload(){
     myFont = loadFont("static/Genos-Bold.ttf")
     bottlePickUpSound = loadSound("sounds/coin.mp3");
     fishPickUpSound = loadSound("sounds/error.mp3");
+    winSound = loadSound("sounds/win.mp3");
+    loseSound = loadSound("sounds/fail.mp3");
 }
 
 function setup() {
@@ -176,7 +182,11 @@ function setup() {
 
 function draw() { 
 
-    if(trashScore >= 10){
+    if(trashScore >= 1){
+//Setup Win Sound Effect
+        if (winSound.isPlaying() == false) {
+            winSound.play();
+        }
 //Changes screen to the Completion Screen
         background(135,206,235);
         image(bg_win, 0, 0, 500, 800);
@@ -216,6 +226,10 @@ function draw() {
 
 //Checks if the user lost all their lives, switch to failScreen
     else if (lives == 0){
+//Setup lose sound effect
+        if (loseSound.isPlaying() == false) {
+            loseSound.play();
+        }
         background(135,206,235);
         image(bg_fail, 0, 0, 500, 800);
 
