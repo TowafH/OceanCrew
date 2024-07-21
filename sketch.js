@@ -281,14 +281,18 @@ function draw() {
         text("Collect 10 bottles to win!", 390, 60);
 
         for (let i = 0; i < allBottleX.length; i++) {  //change
+
+            //Draw & Increment the Falling Bottles
             allBottleY[i] += 3;
             image(bottle, allBottleX[i], allBottleY[i]);
 
+            //If bottles that fall down, exceed the height, respawn
             if (allBottleY[i] > height) {
                 allBottleX[i] = random(50, width - 50);
                 allBottleY[i] = random(-500, -50);
             }
 
+            //Checking for bottle collisions
             if (allBottleX[i] > myxPos - 20 && allBottleX[i] < myxPos + 80 && allBottleY[i] > myYpos - 20 && allBottleY[i] < myYpos + 80) {
                 trashScore++;
                 allBottleX[i] = random(50, width - 50);
@@ -298,14 +302,18 @@ function draw() {
         }
 
         for (let i = 0; i < allFishX.length; i++) {
+
+            //Draw & Increment the falling fish
             allFishY[i] += 3;
             image(fish, allFishX[i], allFishY[i]);
 
+            //If bottles that fall down, exceed the height, respawn
             if (allFishY[i] > height) {
                 allFishX[i] = random(50, width - 50);
                 allFishY[i] = random(-500, -50);
             }
 
+            //Checking for Fish Collision
             if (allFishX[i] > myxPos - 20 && allFishX[i] < myxPos + 80 && allFishY[i] > myYpos - 20 && allFishY[i] < myYpos + 80) {
                 lives--;
                 allFishX[i] = random(50, width - 50);
@@ -382,6 +390,3 @@ function mouseClicked() {
 
 //Create a function that spawns a bottle at random X position from top of the screen (y = 0 or less than). 
 // Since draw() runs infinite amount of times, if you call the function, it'll probably spawn a bunch
-function spawnBottle(){
-
-}
