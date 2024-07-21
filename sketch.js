@@ -182,7 +182,7 @@ function setup() {
 
 function draw() { 
 
-    if(trashScore >= 1){
+    if(trashScore >= 5){
 //Setup Win Sound Effect
         if (winSound.isPlaying() == false) {
             winSound.play();
