@@ -494,7 +494,7 @@ function draw() {
         
         
                 //Draw scuba Image 
-                image(scuba, myxPos, myYpos, 50, 50);
+                image(scuba, myxPos, myYpos, 80, 80);
         
         // Movement keys with boundary checks
         if ((keyIsDown(LEFT_ARROW) || keyIsDown(65)) && myxPos > 0) {
@@ -662,7 +662,7 @@ function draw() {
                     
                     
                             //Draw scuba Image 
-                            image(scuba, myxPos, myYpos, 50, 50);
+                            image(scuba, myxPos, myYpos, 80, 80);
                     
         // Movement keys with boundary checks
         if ((keyIsDown(LEFT_ARROW) || keyIsDown(65)) && myxPos > 0) {
