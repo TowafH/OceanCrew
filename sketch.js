@@ -77,7 +77,7 @@ let loseSound;
 
 //Setup Scuba Diver Collision Variable
 let myxPos = 250;
-let myYpos = 400;
+let myYpos = 600;
 
 // Array to store bottle and fish positions // CHANGE
 let allBottleX = [];
