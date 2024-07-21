@@ -329,23 +329,23 @@ function draw() {
         //Draw scuba Image 
         image(scuba, myxPos, myYpos, 50, 50);
 
-        //Movement keys
-        if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
+        // Movement keys with boundary checks
+        if ((keyIsDown(LEFT_ARROW) || keyIsDown(65)) && myxPos > 0) {
             myxPos -= 10;
         } 
-    
-        if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
+
+        if ((keyIsDown(RIGHT_ARROW) || keyIsDown(68)) && myxPos < width - 50) {
             myxPos += 10;
         } 
-    
-        if (keyIsDown(UP_ARROW) || keyIsDown(87)) {
+
+        if ((keyIsDown(UP_ARROW) || keyIsDown(87)) && myYpos > 0) {
             myYpos -= 10;
         } 
-    
-        if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {
+
+        if ((keyIsDown(DOWN_ARROW) || keyIsDown(83)) && myYpos < height - 50) {
             myYpos += 10;
-            }
         }
+    }
         //END OF CODE FOR LEVEL 1
 
         
@@ -496,22 +496,22 @@ function draw() {
                 //Draw scuba Image 
                 image(scuba, myxPos, myYpos, 50, 50);
         
-                //Movement keys
-                if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
-                    myxPos -= 7;
-                } 
-            
-                if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
-                    myxPos += 7;
-                } 
-            
-                if (keyIsDown(UP_ARROW) || keyIsDown(87)) {
-                    myYpos -= 7;
-                } 
-            
-                if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {
-                    myYpos += 7;
-                    }
+        // Movement keys with boundary checks
+        if ((keyIsDown(LEFT_ARROW) || keyIsDown(65)) && myxPos > 0) {
+            myxPos -= 10;
+        } 
+
+        if ((keyIsDown(RIGHT_ARROW) || keyIsDown(68)) && myxPos < width - 50) {
+            myxPos += 10;
+        } 
+
+        if ((keyIsDown(UP_ARROW) || keyIsDown(87)) && myYpos > 0) {
+            myYpos -= 10;
+        } 
+
+        if ((keyIsDown(DOWN_ARROW) || keyIsDown(83)) && myYpos < height - 50) {
+            myYpos += 10;
+        }
                 }
                 //END OF CODE FOR LEVEL 2
 
@@ -664,22 +664,22 @@ function draw() {
                             //Draw scuba Image 
                             image(scuba, myxPos, myYpos, 50, 50);
                     
-                            //Movement keys
-                            if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
-                                myxPos -= 7;
-                            } 
-                        
-                            if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
-                                myxPos += 7;
-                            } 
-                        
-                            if (keyIsDown(UP_ARROW) || keyIsDown(87)) {
-                                myYpos -= 7;
-                            } 
-                        
-                            if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {
-                                myYpos += 7;
-                                }
+        // Movement keys with boundary checks
+        if ((keyIsDown(LEFT_ARROW) || keyIsDown(65)) && myxPos > 0) {
+            myxPos -= 10;
+        } 
+
+        if ((keyIsDown(RIGHT_ARROW) || keyIsDown(68)) && myxPos < width - 50) {
+            myxPos += 10;
+        } 
+
+        if ((keyIsDown(UP_ARROW) || keyIsDown(87)) && myYpos > 0) {
+            myYpos -= 10;
+        } 
+
+        if ((keyIsDown(DOWN_ARROW) || keyIsDown(83)) && myYpos < height - 50) {
+            myYpos += 10;
+        }
                             }
 }
 
