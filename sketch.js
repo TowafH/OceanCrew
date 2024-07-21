@@ -75,11 +75,13 @@ let scubaImg;
 let myxPos = 100;
 let myYpos = 100;
 
-//Setup Bottles Image
-let bottleX;
-let bottleY;
-let fishX;
-let fishY;
+// Array to store bottle and fish positions // CHANGE
+let allBottleX = [];
+let allBottleY = [];
+let allFishX = [];
+let allFishY = [];
+let numBottles = 2;
+let numFish = 2;  // END OF CHANGE
 
 //Initial Score Variables
 let trashScore = 0;
@@ -110,6 +112,15 @@ function preload(){
 
 function setup() {
     createCanvas(500, 800);
+    for (let i = 0; i < numBottles; i++) { // CHANGE
+        allBottleX.push(random(50, width - 50));
+        allBottleY.push(random(-500, -50));
+    }
+    for (let i = 0; i < numFish; i++) {
+        allFishX.push(random(50, width - 50));
+        allFishY.push(random(-500, -50));
+    }                                       // END OF CHANGE
+
     noStroke();
     rectMode(CENTER);
     textFont(myFont);
@@ -255,45 +266,41 @@ function draw() {
         text("Avoid the Fish", 430, 20);
         text("Collect 10 bottles to win!", 390, 60);
 
-        // Draw the bottle
-        bottleY += 3;
-        image(bottle, bottleX, bottleY);
+        for (let i = 0; i < allBottleX.length; i++) {  //change
+            allBottleY[i] += 3;
+            image(bottle, allBottleX[i], allBottleY[i]);
 
+            if (allBottleY[i] > height) {
+                allBottleX[i] = random(50, width - 50);
+                allBottleY[i] = random(-500, -50);
+            }
 
-        // Check if bottle has fallen out of the canvas
-        if (bottleY > height) {
-            // Restart the bottle position
-            bottleX = random(50, width -50);
-            bottleY = random(-500,-50);
+            if (allBottleX[i] > myxPos - 20 && allBottleX[i] < myxPos + 80 && allBottleY[i] > myYpos - 20 && allBottleY[i] < myYpos + 80) {
+                trashScore++;
+                allBottleX[i] = random(50, width - 50);
+                allBottleY[i] = random(-500, -50);
+                bottlePickUpSound.play();
+            }
         }
 
-        // Check for Player Collison with Bottle
-        if (bottleX > myxPos - 20 && bottleX < myxPos + 80 && bottleY > myYpos - 20 && bottleY < myYpos + 80) {
-            trashScore++;
-            // Restart the bottle position after collection
-            bottleX = random(50, width -50);
-            bottleY = random(-500, -50);
-            bottlePickUpSound.play();
-        }    
+        for (let i = 0; i < allFishX.length; i++) {
+            allFishY[i] += 3;
+            image(fish, allFishX[i], allFishY[i]);
 
-        // Draw the fish
-        fishY += 3;
-        image(fish, fishX, fishY);
+            if (allFishY[i] > height) {
+                allFishX[i] = random(50, width - 50);
+                allFishY[i] = random(-500, -50);
+            }
 
-        //Check for Player Collision with Fish
-        if(fishX > myxPos-20 && fishX < myxPos + 80 && fishY > myYpos -20 && fishY < myYpos + 80){
-            lives--;
-            fishX = random(50,width-50);
-            fishY = random(-500,-50)
-            fishPickUpSound.play();
-        }
-        
-        // Check if fish has fallen out of the canvas
-        if (fishY > height) {
-            // Restart the fish position
-            fishX = random(50,width-50);
-            fishY = random(-500,-50);
-        }
+            if (allFishX[i] > myxPos - 20 && allFishX[i] < myxPos + 80 && allFishY[i] > myYpos - 20 && allFishY[i] < myYpos + 80) {
+                lives--;
+                allFishX[i] = random(50, width - 50);
+                allFishY[i] = random(-500, -50);
+                fishPickUpSound.play();
+            }
+        }    // end of change
+
+
 
         //Draw scuba Image 
         image(scuba, myxPos, myYpos, 50, 50);
@@ -328,12 +335,19 @@ function mouseClicked() {
         clickbutton == false; 
     } 
 
-    //Generates the Fish
-    fishX = random(50, width - 50);   
-    fishY = random(-500, -50);
-    //Generates the Bottle
-    bottleX = random(50, width - 50); 
-    bottleY = random(-500, -50); 
+    // Generates the fish
+    for (let i = 0; i < numFish; i++) {
+        allFishX[i] = random(50, width - 50);   
+        allFishY[i] = random(-500, -50);
+    }
+            
+    // Generates the bottle
+    for (let i = 0; i < numBottles; i++) {
+        allBottleX[i] = random(50, width - 50); 
+        allBottleY[i] = random(-500, -50); 
+    }
+
+ 
 
     //Selects the Area that has to be clicked to start level 2
     if (mouseX > levelsXPos - 137 && mouseX < levelsXPos + 137 && mouseY > level2YPos - 52.5 && mouseY < level2YPos + 52.5 && clickbutton == true) {
