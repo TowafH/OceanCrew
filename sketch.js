@@ -117,7 +117,7 @@ function preload(){
 }
 
 function setup() {
-    createCanvas(500, 800);
+    createCanvas(500, 700);
     for (let i = 0; i < numBottles; i++) { // CHANGE
         allBottleX.push(random(50, width - 50));
         allBottleY.push(random(-500, -50));
