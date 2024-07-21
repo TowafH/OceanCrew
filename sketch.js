@@ -452,7 +452,7 @@ function draw() {
                 for (let i = 0; i < allBottleX.length; i++) {  //change
         
                     //Draw & Increment the Falling Bottles
-                    allBottleY[i] += 6;
+                    allBottleY[i] += 7;
                     image(bottle, allBottleX[i], allBottleY[i]);
         
                     //If bottles that fall down, exceed the height, respawn
@@ -473,7 +473,7 @@ function draw() {
                 for (let i = 0; i < allFishX.length; i++) {
         
                     //Draw & Increment the falling fish
-                    allFishY[i] += 6;
+                    allFishY[i] += 7;
                     image(fish, allFishX[i], allFishY[i]);
         
                     //If bottles that fall down, exceed the height, respawn
@@ -498,19 +498,19 @@ function draw() {
         
                 //Movement keys
                 if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
-                    myxPos -= 10;
+                    myxPos -= 7;
                 } 
             
                 if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
-                    myxPos += 10;
+                    myxPos += 7;
                 } 
             
                 if (keyIsDown(UP_ARROW) || keyIsDown(87)) {
-                    myYpos -= 10;
+                    myYpos -= 7;
                 } 
             
                 if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {
-                    myYpos += 10;
+                    myYpos += 7;
                     }
                 }
                 //END OF CODE FOR LEVEL 2
@@ -620,7 +620,7 @@ function draw() {
                             for (let i = 0; i < allBottleX.length; i++) {  //change
                     
                                 //Draw & Increment the Falling Bottles
-                                allBottleY[i] += 10;
+                                allBottleY[i] += 12;
                                 image(bottle, allBottleX[i], allBottleY[i]);
                     
                                 //If bottles that fall down, exceed the height, respawn
@@ -641,7 +641,7 @@ function draw() {
                             for (let i = 0; i < allFishX.length; i++) {
                     
                                 //Draw & Increment the falling fish
-                                allFishY[i] += 10;
+                                allFishY[i] += 12;
                                 image(fish, allFishX[i], allFishY[i]);
                     
                                 //If bottles that fall down, exceed the height, respawn
@@ -666,19 +666,19 @@ function draw() {
                     
                             //Movement keys
                             if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
-                                myxPos -= 10;
+                                myxPos -= 6;
                             } 
                         
                             if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
-                                myxPos += 10;
+                                myxPos += 6;
                             } 
                         
                             if (keyIsDown(UP_ARROW) || keyIsDown(87)) {
-                                myYpos -= 10;
+                                myYpos -= 6;
                             } 
                         
                             if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {
-                                myYpos += 10;
+                                myYpos += 6;
                                 }
                             }
 }
