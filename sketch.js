@@ -317,7 +317,7 @@ winnn();
         text("Avoid the Fish", 430, 20);
         text("Collect 5 bottles to win!", 390, 60);
 
-        for (let i = 0; i < allBottleX.length; i++) {  //change
+        for (let i = 0; i < allBottleX.length; i++) {  
 
             //Draw & Increment the Falling Bottles
             allBottleY[i] += 3;
@@ -359,7 +359,7 @@ winnn();
             }
 
         
-        }    // end of change
+        }   
 
 
 
@@ -494,20 +494,20 @@ winnn();
 
 
 
-if(trashScore3 >= 10){
-    winnn();
+                        if(trashScore3 >= 10){
+                        winnn();
                         } 
                     
-    //Checks if the user lost all their lives, switch to failScreen
-  else if (lives3 == 0){
-    //Setup lose sound effect
- loose();
+                        //Checks if the user lost all their lives, switch to failScreen
+                        else if (lives3 == 0){
+                        //Setup lose sound effect
+                         loose();
                         }
+
+                        else if(Three == true) {
                     
-else if(Three == true) {
-                    
-console.log("Inside level3");
-background(135,206,235)
+                        console.log("Inside level3");
+                        background(135,206,235)
                             image(bg_game, 0, 0, 500, 800);
                     
                             textSize(20);
