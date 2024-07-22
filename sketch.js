@@ -97,7 +97,12 @@ let lives2 = 3;
 let trashScore3 = 0;
 let lives3 = 2;
 
+//timer
 
+let timer1 = 20;
+let timer2 = 15;
+let timer3 = 10;
+let loosetime = 0;
 
 function preload(){
     fish = loadImage("images/fish.png");// changed to fish it was in bg
@@ -115,6 +120,94 @@ function preload(){
     winSound = loadSound("sounds/win.mp3");
     loseSound = loadSound("sounds/fail.mp3");
 }
+
+
+function loose() {
+    if (loseSound.isPlaying() == false) {
+        loseSound.play();
+    }
+    background(135,206,235);
+    image(bg_fail, 0, 0, 500, 800);
+
+    image(scubaLogo, 210, 1, 100, 100);
+    textSize(22);
+    stroke(1);
+    text("Ocean Crew", 260, 120, 300, 100);
+
+//Seperation line from Top
+    fill(255)
+    rect(100, 100, 800, 10);
+
+//Box for Level Fail
+    fill(255);
+    rect(250, 200, 300, 100, 5);
+
+//Text within Level Failed Box
+    fill(0);
+    textSize(30);
+    stroke(1);
+    text("Level Failed :(", 260, 240, 300, 100);
+
+//Box for Fail
+    fill(255);
+    rect(250, 350, 300, 100, 5);
+
+//Text within Fail Box
+    fill(0);
+    textSize(30);
+    stroke(1);
+    text("Oh No", 250, 340, 300, 50);
+    textSize(25);
+    text("The Ocean is polluted!", 255, 380, 300, 30);
+    wait(5000);
+    loseSound.stop();
+}
+    function winnn() {
+        //Setup Win Sound Effect
+        if (winSound.isPlaying() == false) {
+            winSound.play();
+            
+        }
+        
+//Changes screen to the Completion Screen
+        background(135,206,235);
+        image(bg_win, 0, 0, 500, 800);
+//Generates the Game Logo
+        image(scubaLogo, 210, 1, 100, 100);
+        textSize(22);
+        stroke(1);
+        text("Ocean Crew", 260, 120, 300, 100);
+
+        //Seperation line from Top
+        fill(255)
+        rect(100, 100, 800, 10);
+
+//Box for Level Completed
+        fill(255);
+        rect(250, 200, 300, 100, 5);
+
+//Text within Level Completed Box
+        fill(0);
+        textSize(30);
+        stroke(1);
+        text("Level Completed!!", 255, 240, 300, 100);
+
+//Box for Congratulations
+        fill(255);
+        rect(250, 350, 300, 100, 5);
+
+//Text within Congratulations Box
+        fill(0);
+        textSize(30);
+        stroke(1);
+        text("Congratulations!", 255, 340, 300, 50);
+        textSize(25);
+        text("You saved the Ocean", 255, 380, 300, 30);
+        Two == false;
+        wait(5000);
+         winSound.stop();
+    }
+
 
 function setup() {
     createCanvas(500, 700);
@@ -183,87 +276,13 @@ function setup() {
 function draw() { 
 
     if(trashScore >= 5){
-//Setup Win Sound Effect
-        if (winSound.isPlaying() == false) {
-            winSound.play();
-        }
-
-//Changes screen to the Completion Screen
-        background(135,206,235);
-        image(bg_win, 0, 0, 500, 800);
-//Generates the Game Logo
-        image(scubaLogo, 210, 1, 100, 100);
-        textSize(22);
-        stroke(1);
-        text("Ocean Crew", 260, 120, 300, 100);
-
-        //Seperation line from Top
-        fill(255)
-        rect(100, 100, 800, 10);
-
-//Box for Level Completed
-        fill(255);
-        rect(250, 200, 300, 100, 5);
-
-//Text within Level Completed Box
-        fill(0);
-        textSize(30);
-        stroke(1);
-        text("Level Completed!!", 255, 240, 300, 100);
-
-//Box for Congratulations
-        fill(255);
-        rect(250, 350, 300, 100, 5);
-
-//Text within Congratulations Box
-        fill(0);
-        textSize(30);
-        stroke(1);
-        text("Congratulations!", 255, 340, 300, 50);
-        textSize(25);
-        text("You saved the Ocean", 255, 380, 300, 30);
-        One == false;
+winnn();
     } 
 
 //Checks if the user lost all their lives, switch to failScreen
     else if (lives == 0){
 //Setup lose sound effect
-        if (loseSound.isPlaying() == false) {
-            loseSound.play();
-        }
-        background(135,206,235);
-        image(bg_fail, 0, 0, 500, 800);
-
-        image(scubaLogo, 210, 1, 100, 100);
-        textSize(22);
-        stroke(1);
-        text("Ocean Crew", 260, 120, 300, 100);
-
-//Seperation line from Top
-        fill(255)
-        rect(100, 100, 800, 10);
-
-//Box for Level Fail
-        fill(255);
-        rect(250, 200, 300, 100, 5);
-
-//Text within Level Failed Box
-        fill(0);
-        textSize(30);
-        stroke(1);
-        text("Level Failed :(", 260, 240, 300, 100);
-
-//Box for Fail
-        fill(255);
-        rect(250, 350, 300, 100, 5);
-
-//Text within Fail Box
-        fill(0);
-        textSize(30);
-        stroke(1);
-        text("Oh No", 250, 340, 300, 50);
-        textSize(25);
-        text("The Ocean is polluted!", 255, 380, 300, 30);
+       loose();
     }
 
     else if(One == true) {
@@ -277,6 +296,22 @@ function draw() {
         text("Ocean Crew", 60, 20);
         text("Score: " + trashScore, 45, 60);
         text("Lives: " + lives, 45, 45);
+
+        // timer
+        textSize(20);
+        fill(0);
+        text("Timer: " + timer1, 200, 20);
+        let currenttime1 = millis();
+        if(currenttime1 - loosetime >= 1000) {
+                timer1 -= 1;
+                loosetime = currenttime1;
+        }
+
+        if( timer1 == 0) { 
+            loose();
+        }
+
+       
 
         fill(255);
         text("Avoid the Fish", 430, 20);
@@ -322,6 +357,8 @@ function draw() {
                 allFishY[i] = random(-500, -50);
                 fishPickUpSound.play();
             }
+
+        
         }    // end of change
 
 
@@ -350,87 +387,13 @@ function draw() {
 
         
     if(trashScore2 >= 7){
-        //Setup Win Sound Effect
-                if (winSound.isPlaying() == false) {
-                    winSound.play();
-                }
-                
-        //Changes screen to the Completion Screen
-                background(135,206,235);
-                image(bg_win, 0, 0, 500, 800);
-        //Generates the Game Logo
-                image(scubaLogo, 210, 1, 100, 100);
-                textSize(22);
-                stroke(1);
-                text("Ocean Crew", 260, 120, 300, 100);
-        
-                //Seperation line from Top
-                fill(255)
-                rect(100, 100, 800, 10);
-        
-        //Box for Level Completed
-                fill(255);
-                rect(250, 200, 300, 100, 5);
-        
-        //Text within Level Completed Box
-                fill(0);
-                textSize(30);
-                stroke(1);
-                text("Level Completed!!", 255, 240, 300, 100);
-        
-        //Box for Congratulations
-                fill(255);
-                rect(250, 350, 300, 100, 5);
-        
-        //Text within Congratulations Box
-                fill(0);
-                textSize(30);
-                stroke(1);
-                text("Congratulations!", 255, 340, 300, 50);
-                textSize(25);
-                text("You saved the Ocean", 255, 380, 300, 30);
-                Two == false;
+        winnn();
             } 
         
         //Checks if the user lost all their lives, switch to failScreen
             else if (lives2 == 0){
         //Setup lose sound effect
-                if (loseSound.isPlaying() == false) {
-                    loseSound.play();
-                }
-                background(135,206,235);
-                image(bg_fail, 0, 0, 500, 800);
-        
-                image(scubaLogo, 210, 1, 100, 100);
-                textSize(22);
-                stroke(1);
-                text("Ocean Crew", 260, 120, 300, 100);
-        
-        //Seperation line from Top
-                fill(255)
-                rect(100, 100, 800, 10);
-        
-        //Box for Level Fail
-                fill(255);
-                rect(250, 200, 300, 100, 5);
-        
-        //Text within Level Failed Box
-                fill(0);
-                textSize(30);
-                stroke(1);
-                text("Level Failed :(", 260, 240, 300, 100);
-        
-        //Box for Fail
-                fill(255);
-                rect(250, 350, 300, 100, 5);
-        
-        //Text within Fail Box
-                fill(0);
-                textSize(30);
-                stroke(1);
-                text("Oh No", 250, 340, 300, 50);
-                textSize(25);
-                text("The Ocean is polluted!", 255, 380, 300, 30);
+                loose();
             }
         
             else if(Two == true) {
@@ -444,6 +407,20 @@ function draw() {
                 text("Ocean Crew", 60, 20);
                 text("Score: " + trashScore2, 45, 60);
                 text("Lives: " + lives2, 45, 45);
+                  // timer
+                  textSize(20);
+                  fill(0);
+                  text("Timer: " + timer2, 200, 20);
+                  let currenttime2 = millis();
+                  if(currenttime2 - loosetime >= 1000) {
+                          timer2 -= 1;
+                          loosetime = currenttime2;
+                  }
+          
+                  if( timer2 == 0) { 
+                      loose();
+                  }
+
         
                 fill(255);
                 text("Avoid the Fish", 430, 20);
@@ -517,94 +494,20 @@ function draw() {
 
 
 
-                if(trashScore3 >= 10){
-                    //Setup Win Sound Effect
-                            if (winSound.isPlaying() == false) {
-                                winSound.play();
-                            }
-                            
-                    //Changes screen to the Completion Screen
-                            background(135,206,235);
-                            image(bg_win, 0, 0, 500, 800);
-                    //Generates the Game Logo
-                            image(scubaLogo, 210, 1, 100, 100);
-                            textSize(22);
-                            stroke(1);
-                            text("Ocean Crew", 260, 120, 300, 100);
-                    
-                            //Seperation line from Top
-                            fill(255)
-                            rect(100, 100, 800, 10);
-                    
-                    //Box for Level Completed
-                            fill(255);
-                            rect(250, 200, 300, 100, 5);
-                    
-                    //Text within Level Completed Box
-                            fill(0);
-                            textSize(30);
-                            stroke(1);
-                            text("Level Completed!!", 255, 240, 300, 100);
-                    
-                    //Box for Congratulations
-                            fill(255);
-                            rect(250, 350, 300, 100, 5);
-                    
-                    //Text within Congratulations Box
-                            fill(0);
-                            textSize(30);
-                            stroke(1);
-                            text("Congratulations!", 255, 340, 300, 50);
-                            textSize(25);
-                            text("You saved the Ocean", 255, 380, 300, 30);
-                            Three == false;
+if(trashScore3 >= 10){
+    winnn();
                         } 
                     
-                    //Checks if the user lost all their lives, switch to failScreen
-                        else if (lives3 == 0){
-                    //Setup lose sound effect
-                            if (loseSound.isPlaying() == false) {
-                                loseSound.play();
-                            }
-                            background(135,206,235);
-                            image(bg_fail, 0, 0, 500, 800);
-                    
-                            image(scubaLogo, 210, 1, 100, 100);
-                            textSize(22);
-                            stroke(1);
-                            text("Ocean Crew", 260, 120, 300, 100);
-                    
-                    //Seperation line from Top
-                            fill(255)
-                            rect(100, 100, 800, 10);
-                    
-                    //Box for Level Fail
-                            fill(255);
-                            rect(250, 200, 300, 100, 5);
-                    
-                    //Text within Level Failed Box
-                            fill(0);
-                            textSize(30);
-                            stroke(1);
-                            text("Level Failed :(", 260, 240, 300, 100);
-                    
-                    //Box for Fail
-                            fill(255);
-                            rect(250, 350, 300, 100, 5);
-                    
-                    //Text within Fail Box
-                            fill(0);
-                            textSize(30);
-                            stroke(1);
-                            text("Oh No", 250, 340, 300, 50);
-                            textSize(25);
-                            text("The Ocean is polluted!", 255, 380, 300, 30);
+    //Checks if the user lost all their lives, switch to failScreen
+  else if (lives3 == 0){
+    //Setup lose sound effect
+ loose();
                         }
                     
-                        else if(Three == true) {
+else if(Three == true) {
                     
-                            console.log("Inside level2");
-                            background(135,206,235)
+console.log("Inside level3");
+background(135,206,235)
                             image(bg_game, 0, 0, 500, 800);
                     
                             textSize(20);
@@ -612,6 +515,20 @@ function draw() {
                             text("Ocean Crew", 60, 20);
                             text("Score: " + trashScore3, 45, 60);
                             text("Lives: " + lives3, 45, 45);
+
+                            //timer
+                            textSize(20);
+                            fill(0);
+                            text("Timer: " + timer3, 200, 20);
+                            let currenttime3 = millis();
+                            if(currenttime3 - loosetime >= 1000) {
+                                    timer3 -= 1;
+                                    loosetime = currenttime3;
+                            }
+                    
+                            if( timer3 == 0) { 
+                                loose();
+                            }
                     
                             fill(255);
                             text("Avoid the Fish", 430, 20);
@@ -620,7 +537,7 @@ function draw() {
                             for (let i = 0; i < allBottleX.length; i++) {  //change
                     
                                 //Draw & Increment the Falling Bottles
-                                allBottleY[i] += 12;
+                                allBottleY[i] += 10;
                                 image(bottle, allBottleX[i], allBottleY[i]);
                     
                                 //If bottles that fall down, exceed the height, respawn
